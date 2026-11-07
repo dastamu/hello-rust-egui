@@ -11,3 +11,11 @@ egui = "0.31"
 egui_extras = { version = "0.31", features = ["image"] }
 # Warto też wprost dodać crate 'image' z odpowiednim formatem:
 image = { version = "0.25", features = ["png"] }
+
+[profile.release]
+opt-level = "z"      # Optymalizacja pod kątem rozmiaru (zamiast szybkości "3")
+strip = true         # Automatycznie usuwa symbole i informacje o debugowaniu
+lto = true           # Włącza Link-Time Optimization (głęboka optymalizacja między modułami)
+codegen-units = 1    # Ogranicza jednostki generowania kodu do 1 (zmniejsza równoległość kompilacji, ale polepsza optymalizację)
+panic = "abort"      # Usuwa logikę odwijania stosu (unwinding) przy awarii programu
+
