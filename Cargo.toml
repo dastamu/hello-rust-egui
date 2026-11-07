@@ -1,0 +1,13 @@
+[package]
+name = "hello-rust-egui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.31" # lub aktualna wersja
+egui = "0.31"
+
+# Upewnij się, że egui_extras ma włączoną flagę "image":
+egui_extras = { version = "0.31", features = ["image"] }
+# Warto też wprost dodać crate 'image' z odpowiednim formatem:
+image = { version = "0.25", features = ["png"] }
