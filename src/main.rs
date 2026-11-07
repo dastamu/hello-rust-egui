@@ -40,7 +40,7 @@ struct MyApp {
 impl eframe::App for MyApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
-            ui.heading("Helo Rust with eGUI");
+            ui.heading("Hello Rust with eGUI");
             ui.horizontal(|ui| {
                 ui.label("Your Name: ");
                 ui.text_edit_singleline(&mut self.name);
@@ -57,3 +57,4 @@ impl eframe::App for MyApp {
 }
 
 // https://github.com/emilk/egui
+// https://docs.rs/egui/latest/egui/
