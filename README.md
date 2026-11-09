@@ -13,7 +13,7 @@ sudo dnf install rust cargo
 ./rustup-init.exe
 rustup toolchain install stable-x86_64-pc-windows-gnu
 rustup default stable-x86_64-pc-windows-gnu
-# Size: 3.44GB
+# Size: 3.44GB (toolchaains: gnu (1.56GB) + msvc (1.29GB))
 ```
 
 ## Run
