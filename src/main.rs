@@ -1,3 +1,8 @@
+// WIN Bez konsoli w trybie --release
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+// WIN Bez konsoli
+//#![windows_subsystem = "windows"]
+
 use eframe::egui;
 
 // fn main() -> Result<(), eframe::Error> {
@@ -9,12 +14,27 @@ use eframe::egui;
 //     )
 // }
 
+fn load_icon() -> egui::IconData {
+    // Ładujemy plik graficzny (np. PNG) bezpośrednio do pliku wykonywalnego
+    let icon_bytes = include_bytes!("assets/icon.png"); 
+    
+    let image = image::load_from_memory(icon_bytes)
+        .expect("Nie udało się załadować ikony z pamięci")
+        .into_rgba8();
+        
+    let (width, height) = image.dimensions();
+    let rgba = image.into_raw();
+    
+    egui::IconData { rgba, width, height }
+}
+
 fn main() -> Result<(), eframe::Error> {
     //let options = eframe::NativeOptions::default();
     // Definiujemy wymiary i opcje okna (viewport)
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
-        .with_inner_size([240.0, 250.0]), // [szerokość, wysokość] w punktach logicznych
+        .with_inner_size([240.0, 250.0]) // [szerokość, wysokość] w punktach logicznych
+        .with_icon(std::sync::Arc::new(load_icon())), // ładowanie ikony programu
         ..Default::default()
     };
     eframe::run_native(
